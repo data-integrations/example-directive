@@ -138,9 +138,48 @@ public final class TextReverse implements UDD {
 
 ### Code Walk Through
 
+#### Annontations
+
+Following annotations are required for the plugin. If any of these are missing, the plugin or the directive will not be loaded. 
+
+* `@Plugin` defines the type of plugin it is. For all UDDs it's set to `UDD.Type`.
+* `@Name` defines the name of the plugin and as well as the directive name. 
+* `@Description` provides a short description for the plugin and as well as for the directive. 
+
+#### Call Pattern
+
 The call pattern of UDD is the following :
 
-* 
+* **DEFINE** : During configure time either in the CDAP Pipeline Transform or Data Prep Service, the `define()` method is invoked only once to retrieve the information of the usage. The usage defines the specification of the arguments that this directive is going to accept. In our example of `text-reverse`, the directive accepts only one argument and that is of type `TokenType.COLUMN_NAME`.
+* **INITIALIZE** : During the initialization just before pumping in `Row`s through the directive, the `initialize()` method is invoked. This method is passed the arguments that are parsed by the system. It also provides the apportunity for the UDD writer to validate and throw exception if the value is not as expected.
+* **EXECUTE** : Once the pipeline has been setup, the `Row` is passed into the `execute()` method to transform. 
+
+### Testing
+
+Following is the JUnit class that couldn't be any simpler. 
+
+```
+  @Test
+  public void testBasicReverse() throws Exception {
+    TestRecipe recipe = new TestRecipe();
+    recipe.add("parse-as-csv :body ',';");
+    recipe.add("set-headers :a,:b,:c;");
+    recipe.add("text-reverse :b");
+
+    TestRows rows = new TestRows();
+    rows.add(new Row("body", "root,joltie,mars avenue"));
+    rows.add(new Row("body", "joltie,root,venus blvd"));
+
+    RecipePipeline pipeline = TestingRig.pipeline(TextReverse.class, recipe);
+    List<Row> actual = pipeline.execute(rows.toList());
+
+    Assert.assertEquals(2, actual.size());
+    Assert.assertEquals("eitloj", actual.get(0).getValue("b"));
+    Assert.assertEquals("toor", actual.get(1).getValue("b"));
+  }
+```
+
+## That's it! Happy UDD'ing.
 
  
   
