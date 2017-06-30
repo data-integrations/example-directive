@@ -78,6 +78,8 @@ This would generate two files
 ### Deploying Plugin
 
 #### CDAP UI
+Inline-style: 
+![alt text](https://github.com/hydrator/example-directive/blob/develop/docs/directive-plugin.gif "Logo Title Text 1")
 
 #### CDAP CLI
 
