@@ -29,11 +29,11 @@ public SimpleUDD implements Directive {
     ...
   }
   
-  public void initialize(Arguments args) {
+  public void initialize(Arguments args) throws DirectiveParseException {
     ...
   }
   
-  public List<Row> execute(List<Row> rows, RecipeContext context) {
+  public List<Row> execute(List<Row> rows, RecipeContext context) throws RecipeException, ErrorRowException {
     ...
   }
 }
@@ -77,9 +77,7 @@ This would generate two files
   
 ### Deploying Plugin
 
-#### CDAP UI
-Inline-style: 
-![alt text](https://github.com/hydrator/example-directive/blob/develop/docs/directive-plugin.gif "Logo Title Text 1")
+There are multiple ways the custom directive can be deployed to CDAP. The two popular ways are through using CDAP CLI (command line interface) and CDAP UI.
 
 #### CDAP CLI
 
@@ -89,7 +87,62 @@ In order to deploy the directive through CLI. Start the CDAP CLI and use the `lo
 $ $CDAP_HOME/bin/cdap cli
 cdap > load artifact my-simple-udd-1.0-SNAPSHOT.jar config-file my-simple-udd-1.0-SNAPSHOT.json
 ```
+
+#### CDAP UI
+![alt text](https://github.com/hydrator/example-directive/blob/develop/docs/directive-plugin.gif "Logo Title Text 1")
+
+## Example
+
+I am going to walk through the creation of a user defined directive(udd) called `text-reverse` that takes one argument: Column Name -- it's the name of the column in a `Row` that needs to be reversed. The resulting row will have the Column Name specified in the input have reversed string of characters.
+
+```
+ !text-reverse :address
+ !text-reverse :id
+```
+
+Here is the implementation of the above UDD. 
+
+```
+@Plugin(type = UDD.Type)
+@Name(TextReverse.NAME)
+@Description("Reverses the column value")
+public final class TextReverse implements UDD {
+  public static final String NAME = "text-reverse";
+  private String column;
   
+  public UsageDefinition define() {
+    UsageDefinition.Builder builder = UsageDefinition.builder(NAME);
+    builder.define("column", TokenType.COLUMN_NAME);
+    return builder.build();
+  }
+  
+  public void initialize(Arguments args) throws DirectiveParseException {
+    this.column = ((ColumnName) args.value("column").value();
+  }
+  
+  public List<Row> execute(List<Row> rows, RecipeContext context) throws RecipeException, ErrorRowException {
+    for(Row row : rows) {
+      int idx = row.find(column);
+      if (idx != -1) {
+        Object object = row.getValue(idx);
+        if (object instanceof String) {
+          String value = (String) object;
+          row.setValue(idx, new StringBuffer(value).reverse().toString());
+        }
+      }
+    }
+    return rows;
+  }
+}
+```
+
+### Code Walk Through
+
+The call pattern of UDD is the following :
+
+* 
+
+ 
   
 
 
