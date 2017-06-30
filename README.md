@@ -75,6 +75,19 @@ This would generate two files
   * Artifact - `my-simple-udd-1.0-SNAPSHOT.jar`
   * Artifact Configuration `my-simple-udd-1.0-SNAPSHOT.json`
   
+### Deploying Plugin
+
+#### CDAP UI
+
+#### CDAP CLI
+
+In order to deploy the directive through CLI. Start the CDAP CLI and use the `load artifact` command to load the plugin artifact into CDAP. 
+
+```
+$ $CDAP_HOME/bin/cdap cli
+cdap > load artifact my-simple-udd-1.0-SNAPSHOT.jar config-file my-simple-udd-1.0-SNAPSHOT.json
+```
+  
   
 
 
