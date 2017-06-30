@@ -14,7 +14,7 @@
  *  the License.
  */
 
-package co.cask.wrangler.directives;
+package org.example.directives;
 
 import co.cask.cdap.api.annotation.Description;
 import co.cask.cdap.api.annotation.Name;

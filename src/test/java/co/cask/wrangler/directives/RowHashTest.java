@@ -21,6 +21,7 @@ import co.cask.wrangler.api.Row;
 import co.cask.wrangler.test.TestingRig;
 import co.cask.wrangler.test.api.TestRecipe;
 import co.cask.wrangler.test.api.TestRows;
+import org.example.directives.RowHash;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;

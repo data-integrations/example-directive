@@ -5,8 +5,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.example</groupId>
-  <artifactId>custom-directives</artifactId>
-  <name>My First Custom Directive</name>
+  <artifactId>simple-udds</artifactId>
+  <name>Simple User Defined Directives</name>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
@@ -98,7 +98,7 @@
               <Embed-Transitive>true</Embed-Transitive>
               <Embed-Directory>lib</Embed-Directory>
               <!--Only @Plugin classes in the export packages will be included as plugin-->
-              <_exportcontents>co.cask.wrangler.directives.*</_exportcontents>
+              <_exportcontents>org.example.directives.*</_exportcontents>
             </instructions>
           </configuration>
           <executions>
