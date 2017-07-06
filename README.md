@@ -1,14 +1,14 @@
 # Introduction
 
-CDAP provides extensive support for user defined directives (UDDs) as a way to specify custom processing for dataprep. CDAP UDDs can currently be implemented in Java.
+CDAP provides extensive support for user defined directives (UDDs) as a way to specify custom processing for DataPrep in CDAP. CDAP UDDs can currently be implemented in Java.
 
-The most extensive support is provided for Java functions. Java functions are also more efficient because they are implemented in the same language as CDAP and DataPrep and because additional interfaces and integrations with other CDAP subsystems are supported.
+CDAP provides the most extensive support for Java functions. Java functions are also more efficient because they are implemented in the same language as CDAP and DataPrep and, also because additional interfaces and integrations with other CDAP subsystems are supported.
 
-User Defined Directives, also known as UDD, allow you to create custom functions to transform records within CDAP DataPrep or a.k.a Wrangler. CDAP comes with a comprehensive library of functions. There are however some omissions, and some specific cases for which UDDs are the solution.
+User Defined Directives, also known as UDDs, allow you to create custom functions to transform records within CDAP DataPrep a.k.a Wrangler. CDAP comes with a comprehensive library of functions. There are however some omissions, and some specific cases for which UDDs are the solution.
 
-UDDs, similar to User-defined Functions (UDFs) have a long history of usefulness in SQL-derived languages and other data processing and query systems.  While the framework can be rich in their expressiveness, there's just no way they can anticipate all the things a developer wants to do.  Thus, the custom UDF has become commonplace in our data manipulation toolbox. In order to support customization or extension, CDAP now has the ability to build your own functions for manipulating data through UDDs.
+UDDs, similar to User-defined Functions (UDFs) have a long history of usefulness in SQL-derived languages and other data processing and query systems.  While the framework can be rich in their expressiveness, there is just no way they can anticipate all the things a developer wants to do.  Thus, the custom UDF has become commonplace in our data manipulation toolbox. In order to support customization or extension, CDAP now has the ability to build your own functions for manipulating data through UDDs.
 
-Developing CDAP DataPrep UDDs by no means rocket science, and is an effective way of solving problems that could either be downright impossible, or does not meet your requirements or very akward to solve. 
+Developing CDAP DataPrep UDDs is by no means any rocket science, and is an effective way of solving problems that could either be downright impossible, or does not meet your requirements or very akward to solve. 
 
 ## Developing UDD
 
@@ -16,7 +16,7 @@ There is one simple interface for developing your customized directive. The simp
 
 ### Simple API
 
-Building a UDD with the simpler UDD API involves nothing more than writing a class with three function (evaluate) and few annotations. Here is an example:
+Building a UDD with the simpler UDD API involves nothing more than writing a class with three functions (evaluate) and few annotations. Here is an example:
 
 ```
 @Plugin(type = UDD.Type)
@@ -41,7 +41,7 @@ public SimpleUDD implements Directive {
 
 ### Testing a simple UDD
 
-Because the UDD is simple three functions class, you can test it with regular testing tools, like JUnit.
+Because the UDD is a simple three functions class, you can test it with regular testing tools, like JUnit.
 
 ```
 public class SimpleUDDTest {
@@ -64,7 +64,7 @@ public class SimpleUDDTest {
 
 ### Building a UDD Plugin
 
-There is nothing much to be done here, this example repository includes a maven POM file that is pre-configured for building the directive JAR. All that a developer does it build the project using the following command. 
+There is nothing much to be done here - this example repository includes a maven POM file that is pre-configured for building the directive JAR. All that a developer does is build the project using the following command. 
 
 ```
   mvn clean package
@@ -77,11 +77,11 @@ This would generate two files
   
 ### Deploying Plugin
 
-There are multiple ways the custom directive can be deployed to CDAP. The two popular ways are through using CDAP CLI (command line interface) and CDAP UI.
+There are multiple ways in which the custom directive can be deployed to CDAP. The two popular ways are through using CDAP CLI (command line interface) and CDAP UI.
 
 #### CDAP CLI
 
-In order to deploy the directive through CLI. Start the CDAP CLI and use the `load artifact` command to load the plugin artifact into CDAP. 
+In order to deploy the directive through CLI, start the CDAP CLI and use the `load artifact` command to load the plugin artifact into CDAP. 
 
 ```
 $ $CDAP_HOME/bin/cdap cli
@@ -93,7 +93,7 @@ cdap > load artifact my-simple-udd-1.0-SNAPSHOT.jar config-file my-simple-udd-1.
 
 ## Example
 
-I am going to walk through the creation of a user defined directive(udd) called `text-reverse` that takes one argument: Column Name -- it's the name of the column in a `Row` that needs to be reversed. The resulting row will have the Column Name specified in the input have reversed string of characters.
+We will now walk through the creation of a user defined directive(udd) called `text-reverse` that takes one argument: Column Name -- it is the name of the column in a `Row` that needs to be reversed. The resulting row will have the Column Name specified in the input have reversed string of characters.
 
 ```
  !text-reverse :address
@@ -156,7 +156,7 @@ The call pattern of UDD is the following :
 
 ### Testing
 
-Following is the JUnit class that couldn't be any simpler. 
+Here is the JUnit class that couldn't be any simpler. 
 
 ```
   @Test
