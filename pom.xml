@@ -18,7 +18,7 @@
     <!-- this is here because project.basedir evaluates to null in the script build step -->
     <main.basedir>${project.basedir}</main.basedir>
     <cdap.version>4.3.0-SNAPSHOT</cdap.version>
-    <wrangler.version>2.1.0-SNAPSHOT</wrangler.version>
+    <wrangler.version>3.0.0-SNAPSHOT</wrangler.version>
     <commons.codec.version>1.10</commons.codec.version>
     <junit.version>4.12</junit.version>
   </properties>
