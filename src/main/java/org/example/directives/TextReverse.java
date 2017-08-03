@@ -80,4 +80,9 @@ public final class TextReverse implements Directive {
     }
     return rows;
   }
+
+  @Override
+  public void destroy() {
+    // no-op
+  }
 }

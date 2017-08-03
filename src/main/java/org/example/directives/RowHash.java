@@ -103,4 +103,9 @@ public final class RowHash implements Directive {
     }
     return rows;
   }
+
+  @Override
+  public void destroy() {
+    // no-op
+  }
 }
