@@ -33,8 +33,15 @@
     </snapshotRepository>
   </distributionManagement>
 
+  <!-- Include the Maven Plugin Repository -->
+  <pluginRepositories>
+   <pluginRepository>
+      <id>sonatype</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </pluginRepository>
+  </pluginRepositories>       
+         
   <dependencies>
-
     <!-- Core Dependencies -->
 
     <dependency>
