@@ -97,8 +97,8 @@ cdap > load artifact my-simple-udd-1.0-SNAPSHOT.jar config-file my-simple-udd-1.
 We will now walk through the creation of a user defined directive(udd) called `text-reverse` that takes one argument: Column Name -- it is the name of the column in a `Row` that needs to be reversed. The resulting row will have the Column Name specified in the input have reversed string of characters.
 
 ```
- !text-reverse :address
- !text-reverse :id
+ text-reverse :address
+ text-reverse :id
 ```
 
 Here is the implementation of the above UDD. 
