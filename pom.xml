@@ -145,7 +145,7 @@
         <version>1.0.0</version>
         <configuration>
           <cdapArtifacts>
-            <parent>wrangler-transform[1.0.0-SNAPSHOT, 10.0.0-SNAPSHOT]</parent>
+            <parent>system:wrangler-transform[1.0.0-SNAPSHOT, 10.0.0-SNAPSHOT]</parent>
           </cdapArtifacts>
         </configuration>
         <executions>
