@@ -108,7 +108,6 @@
             <instructions>
               <Embed-Dependency>*;inline=false;scope=compile</Embed-Dependency>
               <Embed-Transitive>true</Embed-Transitive>
-              <Embed-Directory>lib</Embed-Directory>
               <!--Only @Plugin classes in the export packages will be included as plugin-->
               <_exportcontents>org.example.directives.*</_exportcontents>
             </instructions>
