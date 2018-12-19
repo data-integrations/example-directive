@@ -56,7 +56,7 @@ public final class RowHash implements Directive {
   @Override
   public void initialize(Arguments args) throws DirectiveParseException {
     this.column = ((ColumnName) args.value("column")).value();
-    this.codec = ((Identifier) args.value("codec")).value();
+    this.codec = ((Identifier) args.value("codec")).value().toLowerCase();
     if(!codec.equalsIgnoreCase("md5") && !codec.equalsIgnoreCase("sha1") &&
        !codec.equalsIgnoreCase("sha256") && !codec.equalsIgnoreCase("sha384") &&
        !codec.equalsIgnoreCase("sha512")) {
