@@ -141,7 +141,7 @@
       <plugin>
         <groupId>co.cask</groupId>
         <artifactId>cdap-maven-plugin</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
         <configuration>
           <cdapArtifacts>
             <parent>system:wrangler-transform[3.0.0,10.0.0)</parent>
