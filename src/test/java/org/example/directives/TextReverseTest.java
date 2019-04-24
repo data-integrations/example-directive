@@ -16,12 +16,11 @@
 
 package org.example.directives;
 
-import co.cask.wrangler.test.api.TestRecipe;
-import co.cask.wrangler.test.api.TestRows;
-import co.cask.wrangler.test.TestingRig;
-import co.cask.wrangler.api.RecipePipeline;
-import co.cask.wrangler.api.Row;
-import org.example.directives.TextReverse;
+import io.cdap.wrangler.api.RecipePipeline;
+import io.cdap.wrangler.api.Row;
+import io.cdap.wrangler.test.TestingRig;
+import io.cdap.wrangler.test.api.TestRecipe;
+import io.cdap.wrangler.test.api.TestRows;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;

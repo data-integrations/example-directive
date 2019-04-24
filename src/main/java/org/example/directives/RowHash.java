@@ -16,20 +16,20 @@
 
 package org.example.directives;
 
-import co.cask.cdap.api.annotation.Description;
-import co.cask.cdap.api.annotation.Name;
-import co.cask.cdap.api.annotation.Plugin;
-import co.cask.wrangler.api.Arguments;
-import co.cask.wrangler.api.Directive;
-import co.cask.wrangler.api.DirectiveExecutionException;
-import co.cask.wrangler.api.DirectiveParseException;
-import co.cask.wrangler.api.ErrorRowException;
-import co.cask.wrangler.api.ExecutorContext;
-import co.cask.wrangler.api.Row;
-import co.cask.wrangler.api.parser.ColumnName;
-import co.cask.wrangler.api.parser.Identifier;
-import co.cask.wrangler.api.parser.TokenType;
-import co.cask.wrangler.api.parser.UsageDefinition;
+import io.cdap.cdap.api.annotation.Description;
+import io.cdap.cdap.api.annotation.Name;
+import io.cdap.cdap.api.annotation.Plugin;
+import io.cdap.wrangler.api.Arguments;
+import io.cdap.wrangler.api.Directive;
+import io.cdap.wrangler.api.DirectiveExecutionException;
+import io.cdap.wrangler.api.DirectiveParseException;
+import io.cdap.wrangler.api.ErrorRowException;
+import io.cdap.wrangler.api.ExecutorContext;
+import io.cdap.wrangler.api.Row;
+import io.cdap.wrangler.api.parser.ColumnName;
+import io.cdap.wrangler.api.parser.Identifier;
+import io.cdap.wrangler.api.parser.TokenType;
+import io.cdap.wrangler.api.parser.UsageDefinition;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import java.util.List;
@@ -37,7 +37,7 @@ import java.util.List;
 /**
  * This directive generates a the row hash using all the column values of a row.
  */
-@Plugin(type = Directive.Type)
+@Plugin(type = Directive.TYPE)
 @Name(RowHash.NAME)
 @Description("Generates the row hash using different hashing techniques.")
 public final class RowHash implements Directive {
