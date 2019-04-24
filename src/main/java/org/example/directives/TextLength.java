@@ -16,20 +16,20 @@
 
 package org.example.directives;
 
-import co.cask.cdap.api.annotation.Description;
-import co.cask.cdap.api.annotation.Name;
-import co.cask.cdap.api.annotation.Plugin;
-import co.cask.cdap.api.common.Bytes;
-import co.cask.wrangler.api.Arguments;
-import co.cask.wrangler.api.Directive;
-import co.cask.wrangler.api.DirectiveExecutionException;
-import co.cask.wrangler.api.DirectiveParseException;
-import co.cask.wrangler.api.ErrorRowException;
-import co.cask.wrangler.api.ExecutorContext;
-import co.cask.wrangler.api.Row;
-import co.cask.wrangler.api.parser.ColumnName;
-import co.cask.wrangler.api.parser.TokenType;
-import co.cask.wrangler.api.parser.UsageDefinition;
+import io.cdap.cdap.api.annotation.Description;
+import io.cdap.cdap.api.annotation.Name;
+import io.cdap.cdap.api.annotation.Plugin;
+import io.cdap.cdap.api.common.Bytes;
+import io.cdap.wrangler.api.Arguments;
+import io.cdap.wrangler.api.Directive;
+import io.cdap.wrangler.api.DirectiveExecutionException;
+import io.cdap.wrangler.api.DirectiveParseException;
+import io.cdap.wrangler.api.ErrorRowException;
+import io.cdap.wrangler.api.ExecutorContext;
+import io.cdap.wrangler.api.Row;
+import io.cdap.wrangler.api.parser.ColumnName;
+import io.cdap.wrangler.api.parser.TokenType;
+import io.cdap.wrangler.api.parser.UsageDefinition;
 
 import java.util.List;
 
@@ -37,7 +37,7 @@ import java.util.List;
  * This class <code>TextReverse</code>implements a <code>Directive</code> interface
  * for reversing the text specified by the value of the <code>column</code>.
  */
-@Plugin(type = Directive.Type)
+@Plugin(type = Directive.TYPE)
 @Name(TextLength.DIRECTIVE_NAME)
 @Description("Computes tthe length of the string.")
 public final class TextLength implements Directive {
