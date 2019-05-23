@@ -27,12 +27,7 @@
   <packaging>jar</packaging>
 
   <properties>
-    <!-- properties for script build step that creates the config files for the artifacts -->
-    <widgets.dir>widgets</widgets.dir>
-    <docs.dir>docs</docs.dir>
-    <!-- this is here because project.basedir evaluates to null in the script build step -->
-    <main.basedir>${project.basedir}</main.basedir>
-    <cdap.version>6.0.0-SNAPSHOT</cdap.version>
+    <cdap.version>6.0.0</cdap.version>
     <wrangler.version>4.0.0</wrangler.version>
     <commons.codec.version>1.10</commons.codec.version>
     <junit.version>4.12</junit.version>
@@ -58,25 +53,6 @@
     <url>https://issues.cask.co/browse/CDAP</url>
   </issueManagement>
 
-  <distributionManagement>
-    <repository>
-      <id>sonatype.release</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-    </repository>
-    <snapshotRepository>
-      <id>sonatype.snapshots</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-  </distributionManagement>
-
-  <!-- Include the Maven Plugin Repository -->
-  <pluginRepositories>
-    <pluginRepository>
-      <id>sonatype</id>
-      <url>https://oss.sonatype.org/content/groups/public/</url>
-    </pluginRepository>
-  </pluginRepositories>
-         
   <dependencies>
     <!-- Core Dependencies -->
 
@@ -124,43 +100,16 @@
   </dependencies>
 
   <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.1</version>
-          <configuration>
-            <source>1.7</source>
-            <target>1.7</target>
-          </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.felix</groupId>
-          <artifactId>maven-bundle-plugin</artifactId>
-          <version>2.3.7</version>
-          <extensions>true</extensions>
-          <configuration>
-            <instructions>
-              <Embed-Dependency>*;inline=false;scope=compile</Embed-Dependency>
-              <Embed-Transitive>true</Embed-Transitive>
-              <!--Only @Plugin classes in the export packages will be included as plugin-->
-              <_exportcontents>org.example.directives.*</_exportcontents>
-            </instructions>
-          </configuration>
-          <executions>
-            <execution>
-              <phase>package</phase>
-              <goals>
-                <goal>bundle</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.7.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -169,10 +118,24 @@
       <plugin>
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
+        <version>3.3.0</version>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Embed-Dependency>*;inline=false;scope=compile</Embed-Dependency>
+            <Embed-Transitive>true</Embed-Transitive>
+            <!--Only @Plugin classes in the export packages will be included as plugin-->
+            <_exportcontents>org.example.directives.*</_exportcontents>
+          </instructions>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>bundle</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>io.cdap</groupId>
@@ -195,5 +158,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>
