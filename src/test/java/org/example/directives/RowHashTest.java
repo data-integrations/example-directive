@@ -31,7 +31,7 @@ import java.util.List;
  * Tests {@link RowHash}
  */
 public class RowHashTest {
-  @Ignore
+
   @Test
   public void testBasicRowHash() throws Exception {
     TestRecipe recipe = new TestRecipe();

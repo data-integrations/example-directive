@@ -22,7 +22,6 @@ import io.cdap.wrangler.test.TestingRig;
 import io.cdap.wrangler.test.api.TestRecipe;
 import io.cdap.wrangler.test.api.TestRows;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
@@ -32,11 +31,11 @@ import java.util.List;
  */
 public class TextReverseTest {
 
-  @Ignore
   @Test
   public void testBasicReverse() throws Exception {
     TestRecipe recipe = new TestRecipe();
     recipe.add("parse-as-csv :body ',';");
+    recipe.add("drop :body");
     recipe.add("set-headers :a,:b,:c;");
     recipe.add("text-reverse :b");
 

@@ -19,12 +19,8 @@ package org.example.directives;
 import io.cdap.cdap.api.annotation.Description;
 import io.cdap.cdap.api.annotation.Name;
 import io.cdap.cdap.api.annotation.Plugin;
-import io.cdap.cdap.api.common.Bytes;
 import io.cdap.wrangler.api.Arguments;
 import io.cdap.wrangler.api.Directive;
-import io.cdap.wrangler.api.DirectiveExecutionException;
-import io.cdap.wrangler.api.DirectiveParseException;
-import io.cdap.wrangler.api.ErrorRowException;
 import io.cdap.wrangler.api.ExecutorContext;
 import io.cdap.wrangler.api.Row;
 import io.cdap.wrangler.api.parser.ColumnName;
@@ -53,26 +49,21 @@ public final class TextLength implements Directive {
   }
 
   @Override
-  public void initialize(Arguments args)
-    throws DirectiveParseException {
+  public void initialize(Arguments args) {
     column = ((ColumnName) args.value("column")).value();
   }
 
   @Override
-  public List<Row> execute(List<Row> rows, ExecutorContext context)
-    throws DirectiveExecutionException, ErrorRowException {
+  public List<Row> execute(List<Row> rows, ExecutorContext context) {
     for (Row row : rows) {
       int idx = row.find(column);
       if (idx != -1) {
         Object object = row.getValue(idx);
         if (object instanceof String) {
-          if (object != null) {
-            String value = (String) object;
-            row.setValue(idx, value.length());
-          }
-        } else if (object instanceof byte[]) {
-          String value = Bytes.toString((byte[])object);
+          String value = (String) object;
           row.setValue(idx, value.length());
+        } else if (object instanceof byte[]) {
+          row.setValue(idx, ((byte[]) object).length);
         }
       }
     }
