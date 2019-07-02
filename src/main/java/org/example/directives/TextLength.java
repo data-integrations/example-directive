@@ -35,7 +35,7 @@ import java.util.List;
  */
 @Plugin(type = Directive.TYPE)
 @Name(TextLength.DIRECTIVE_NAME)
-@Description("Computes tthe length of the string.")
+@Description("Computes the length of the string.")
 public final class TextLength implements Directive {
   public static final String DIRECTIVE_NAME = "text-length";
   private String column;
