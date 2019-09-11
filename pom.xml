@@ -32,6 +32,17 @@
     <commons.codec.version>1.10</commons.codec.version>
     <junit.version>4.12</junit.version>
   </properties>
+  
+  <repositories>
+    <repository>
+      <id>sonatype</id>
+      <url>https://oss.sonatype.org/content/groups/public</url>
+    </repository>
+    <repository>
+      <id>sonatype-snapshots</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </repository>
+  </repositories>
 
   <licenses>
     <license>
