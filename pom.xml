@@ -30,7 +30,7 @@
     <cdap.version>6.0.0</cdap.version>
     <wrangler.version>4.0.0</wrangler.version>
     <commons.codec.version>1.10</commons.codec.version>
-    <junit.version>4.12</junit.version>
+    <junit.version>4.13.1</junit.version>
   </properties>
 
   <licenses>
