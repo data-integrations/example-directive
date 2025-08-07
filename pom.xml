@@ -27,9 +27,9 @@
   <packaging>jar</packaging>
 
   <properties>
-    <cdap.version>6.0.0</cdap.version>
-    <wrangler.version>4.0.0</wrangler.version>
-    <commons.codec.version>1.10</commons.codec.version>
+    <cdap.version>6.9.2</cdap.version>
+    <wrangler.version>4.8.0</wrangler.version>
+    <commons.codec.version>1.16.0</commons.codec.version>
     <junit.version>4.12</junit.version>
   </properties>
 
@@ -59,6 +59,12 @@
     <dependency>
       <groupId>io.cdap.wrangler</groupId>
       <artifactId>wrangler-api</artifactId>
+      <version>${wrangler.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.cdap.wrangler</groupId>
+      <artifactId>wrangler-core</artifactId>
       <version>${wrangler.version}</version>
       <scope>provided</scope>
     </dependency>
@@ -144,6 +150,7 @@
         <configuration>
           <cdapArtifacts>
             <parent>system:wrangler-transform[4.0.0,5.0.0)</parent>
+            <parent>system:wrangler-service[4.0.0,5.0.0)</parent>
           </cdapArtifacts>
         </configuration>
         <executions>
